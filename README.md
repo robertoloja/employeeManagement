@@ -1,4 +1,5 @@
-**CENG212, Fall 2015, Lab 7**
+**CENG212, Fall 2015**  
+**Lab 7**
 
 Using Eclipse project format.
 
