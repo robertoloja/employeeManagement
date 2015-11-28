@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JApplet;
 import javax.swing.JLabel;
@@ -34,14 +35,19 @@ public class CompanyApplet extends JApplet {
 	JLabel label1, label2;
 
 	public CompanyApplet() { // Default layout manager is BorderLayout
+		//super("Company Applet");
 
+	
 	}
 
 	public void init() {
+
+		 setLayout(new GridLayout(3,1));
+		
+		add(new TopPanel());
+		add(new MiddlePanel());
+		add(new BottomPanel());
 	
-		label1 = new JLabel("Message from constructor", JLabel.CENTER);
-		add(label1, BorderLayout.NORTH);
-		JLabel label2 = new JLabel("Message from init()", JLabel.LEFT);
-		add(label2, BorderLayout.WEST);
+	
 	}
 }
