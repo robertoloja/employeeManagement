@@ -1,4 +1,5 @@
-//TODO: Maybe move this class's main method to UseCarLot.
+//TODO: This needs to be reworked to have the appropriate reset to original
+//		data, display, sort, add, and delete methods.
 /**
  * Contains methods to be used on LinkedLists of Car objects.
  * @author Roberto Loja
@@ -9,7 +10,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-class CarLot
+class Company
 {
 	// Class constants.
 	final private static int	MAX_STR_LENGTH = 9;
@@ -17,7 +18,7 @@ class CarLot
 	final private static double MAX_PRICE	   = 999999.99;
 
 	/**
-	 * Displays all cars in alphabetical order with headings, one line per car.
+	 * Displays all employees in alphabetical order with headings, one line per car.
 	 * @param cars A LinkedList containing car objects.
 	 */
 	public static void displayCars(LinkedList cars)
@@ -75,37 +76,6 @@ class CarLot
 		}
 		if (!found)
 			System.out.println("Car with VIN " + vin + " not found.");
-	}
-
-	/**
-	 * Lists the first two cars of the same model.
-	 * @param cars A LinkedList containing car objects.
-	 */
-	public static void listSameModel(LinkedList cars)
-	{
-		Car cur = null;
-		boolean stop = false;
-		ListIterator iter = null;
-
-		// Using a regular for loop gives an index that can be reused.
-		for (int i = 0; i < cars.size(); i++) 
-		{
-			if (!stop)
-				iter = cars.listIterator(i + 1); // As max(i + 1) = cars.size(),
-			                                     // no exception is thrown.
-			while (iter.hasNext() && !stop)
-			{
-				cur = (Car) iter.next();
-				if (((Car) cars.get(i)).compareTo(cur) == 0)
-				{
-					infoFromVin(cars, ((Car) cars.get(i)).getVin());
-					infoFromVin(cars, cur.getVin());
-					stop = true;
-				}
-			}
-		}
-		if (!stop)
-			System.out.println("Could not find two cars of the same model.");
 	}
 
 	/**
