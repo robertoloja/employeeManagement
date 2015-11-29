@@ -37,4 +37,4 @@ Back-end:
 Company.addEmployee returns -1 if attempting to add a type of employee that
 does not exist.
 It returns 1 if attempting to add an employee with invalid parameters (e.g.
-a territory, department, or level that does not exist).
+a territory, department, or level that does not exist). Returns 0 if no errors.
