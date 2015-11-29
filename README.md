@@ -27,8 +27,8 @@ Interface:
 Back-end:
 
 - Departments must be one of the following:
-  - Operations, Development, Quality Assurance.
+ - Operations, Development, Quality Assurance.
 - Employee levels must be between 1 and 3.
 - Territories must be one of the following:
-  - North, West, South, East.
+ - North, West, South, East.
 - Employee numbers must be unique.
