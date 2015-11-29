@@ -1,4 +1,3 @@
-// TODO: Figure out a way to keep employee numbers unique.
 import java.util.ArrayList;
 import java.util.Collections;
 
