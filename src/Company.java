@@ -19,6 +19,11 @@ class Company
 													  "West", "East"};
 	private static final int MAX_LEVEL = 3;
 
+
+	private int empNum = 1;
+	private int nextEmpNum() { return empNum++; }
+
+
 	/**
 	 * Constructor. Calls resetList().
 	 */
@@ -32,8 +37,6 @@ class Company
 	 */
 	public void resetList()
 	{
-		int empNum = 1;
-
 		// Clear the list.
 		for (Object emp : employees)
 			employees.remove(emp);
@@ -69,22 +72,24 @@ class Company
 			if (validateString(VALID_DEPTS, department) && 
 					(level > 0 && level <= MAX_LEVEL)) 
 			{
-				employees.add(new Technician());
-				employees.get(employees.size() - 1).setName(name);
-
-				((Technician) employees.get(employees.size() - 1))
-									.setDepartment(department);
-
-				((Technician) employees.get(employees.size() - 1))
-									.setLevel(level);
-				// TODO: Employee Number.
+				Technician tech = new Technician(name, nextEmpNum(), level,
+						department);
+				employees.add(tech);
 
 			} else {
-				value = -1;
+				value = 1;
 			}
 
 		} else if (type.equalsIgnoreCase("s")) {
 			// Add a salesman with error checking.
+			if (validateString(VALID_TERRITORIES, territory))
+			{
+				Salesman sm = new Salesman(name, nextEmpNum(), salesTarget,
+						territory);
+				employees.add(sm);
+			} else {
+				value = 1;
+			}
 		} else {
 			// ERROR: This type of employee doesn't exist.
 			value = -1;

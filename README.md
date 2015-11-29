@@ -26,14 +26,14 @@ Interface:
 
 Back-end:
 
-* Departments must be one of the following:
-
-  * Operations, Development, Quality Assurance.
-
+* Departments must be one of the following: Operations, Development, Quality Assurance.
 * Employee levels must be between 1 and 3.
-
-* Territories must be one of the following:
-
-  * North, West, South, East.
-
+* Territories must be one of the following: North, West, South, East.
 * Employee numbers must be unique.
+
+
+**Error codes**
+Company.addEmployee returns -1 if attempting to add a type of employee that
+does not exist.
+It returns 1 if attempting to add an employee with invalid parameters (e.g.
+a territory, department, or level that does not exist).
