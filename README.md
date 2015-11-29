@@ -20,10 +20,12 @@ I think I'd rather we use the same coding style.
 **Error checking**
 
 Interface:
+
 - Only letters can be entered in the Name, Territory, and Department fields.
 - Only numbers can be entered in the Sales Target and employee level fields.
 
 Back-end:
+
 - Departments must be one of the following:
   - Operations, Development, Quality Assurance.
 - Employee levels must be between 1 and 3.
