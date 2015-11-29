@@ -33,6 +33,7 @@ Back-end:
 
 
 **Error codes**
+
 Company.addEmployee returns -1 if attempting to add a type of employee that
 does not exist.
 It returns 1 if attempting to add an employee with invalid parameters (e.g.
