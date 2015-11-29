@@ -1,3 +1,4 @@
+// TODO: Finish addEmployee.
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -11,6 +12,13 @@ class Company
 {
 	public ArrayList<Employee> employees = new ArrayList<Employee>();
 
+	// Class constants. Used for input validation.
+	private static final String[] validDepts = {"Operations", "Development",
+												"Quality Assurance"};
+	private static final String[] validTerritories = {"North", "South",
+													  "West", "East"};
+	private static final int[] validLevels = {1, 2, 3};
+
 	/**
 	 * Constructor. Calls resetList().
 	 */
@@ -20,7 +28,7 @@ class Company
 	}
 
 	/**
-	 * Returns the ArrayList employees to its initial state.
+	 * Resets the ArrayList employees to its initial state.
 	 */
 	public void resetList()
 	{
@@ -43,6 +51,9 @@ class Company
 		employees.add(new Technician("Jessica", empNum++, 2, "QA"));
 	}
 
+	/**
+	 * Sort employees by Employee number.
+	 */
 	public void sortList()
 	{
 		Collections.sort(employees);
@@ -55,6 +66,20 @@ class Company
 		if (type.equalsIgnoreCase("t"))
 		{
 			// Add a technician with error checking.
+			if (validateString(validDepts, department)) 
+			{
+				employees.add(new Technician());
+				employees.get(employees.size()).setName(name);
+
+				((Technician)employees.get(employees.size()))
+									.setDepartment(department);
+
+				((Technician)employees.get(employees.size()))
+									.setDepartment(department);
+			} else {
+				value = -1;
+			}
+
 		} else if (type.equalsIgnoreCase("s")) {
 			// Add a salesman with error checking.
 		} else {
@@ -84,5 +109,18 @@ class Company
 			value = -1;
 
 		return value;
+	}
+
+	private boolean validateString(String[] validSet, String toValidate)
+	{
+		boolean validated = false;
+
+		for (String item : validSet)
+		{
+			if (item.equals(toValidate))
+				validated = true;
+		}
+
+		return validated;
 	}
 }
