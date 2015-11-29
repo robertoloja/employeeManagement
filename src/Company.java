@@ -1,4 +1,4 @@
-// TODO: Finish addEmployee.
+// TODO: Figure out a way to keep employee numbers unique.
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -13,11 +13,11 @@ class Company
 	public ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	// Class constants. Used for input validation.
-	private static final String[] validDepts = {"Operations", "Development",
+	private static final String[] VALID_DEPTS = {"Operations", "Development",
 												"Quality Assurance"};
-	private static final String[] validTerritories = {"North", "South",
+	private static final String[] VALID_TERRITORIES = {"North", "South",
 													  "West", "East"};
-	private static final int[] validLevels = {1, 2, 3};
+	private static final int MAX_LEVEL = 3;
 
 	/**
 	 * Constructor. Calls resetList().
@@ -66,16 +66,19 @@ class Company
 		if (type.equalsIgnoreCase("t"))
 		{
 			// Add a technician with error checking.
-			if (validateString(validDepts, department)) 
+			if (validateString(VALID_DEPTS, department) && 
+					(level > 0 && level <= MAX_LEVEL)) 
 			{
 				employees.add(new Technician());
-				employees.get(employees.size()).setName(name);
+				employees.get(employees.size() - 1).setName(name);
 
-				((Technician)employees.get(employees.size()))
+				((Technician) employees.get(employees.size() - 1))
 									.setDepartment(department);
 
-				((Technician)employees.get(employees.size()))
-									.setDepartment(department);
+				((Technician) employees.get(employees.size() - 1))
+									.setLevel(level);
+				// TODO: Employee Number.
+
 			} else {
 				value = -1;
 			}
