@@ -9,7 +9,7 @@ import java.util.Collections;
  */
 class Company
 {
-	public ArrayList<Employee> employees = new ArrayList<Employee>();
+	private ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	// Class constants. Used for input validation.
 	private static final String[] VALID_DEPTS		= {"Operations", "Development", "Quality Assurance"};
@@ -158,4 +158,7 @@ class Company
 
 		return validated;
 	}
+
+	// Getter for ArrayList employees.
+	public ArrayList<Employee> getEmployees() { return employees; }
 }
