@@ -36,8 +36,10 @@ class Company
 	public void resetList()
 	{
 		// Clear the list.
-		for (Object emp : employees)
-			employees.remove(emp);
+		employees.clear();
+
+		// Reset employee numbers.
+		empNum = 1;
 
 		// Default employees.
 		employees.add(new Salesman("Shirley", nextEmpNum(), 500, "North"));
