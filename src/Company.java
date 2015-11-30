@@ -5,20 +5,19 @@ import java.util.Collections;
  * Contains an ArrayList of Employee objects and the methods to access or 
  * manipulate that list.
  * @author Roberto Loja
- * @version November 11 2015
+ * @version November 30 2015
  */
 class Company
 {
 	public ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	// Class constants. Used for input validation.
-	private static final String[] VALID_DEPTS = {"Operations", "Development",
-												"Quality Assurance"};
-	private static final String[] VALID_TERRITORIES = {"North", "South",
-													  "West", "East"};
-	private static final int MAX_LEVEL = 3;
+	private static final String[] VALID_DEPTS		= {"Operations", "Development", "Quality Assurance"};
+	private static final String[] VALID_TERRITORIES = {"North", "South", "West", "East"};
+	private static final int MAX_LEVEL				= 3;
 
-
+	// Calling nextEmpNum() returns an employee number that is unique for the
+	// current runtime session.
 	private int empNum = 1;
 	private int nextEmpNum() { return empNum++; }
 
@@ -41,16 +40,16 @@ class Company
 			employees.remove(emp);
 
 		// Default employees.
-		employees.add(new Salesman("Shirley", empNum++, 500, "North"));
-		employees.add(new Salesman("Jeff", empNum++, 800, "East"));
-		employees.add(new Salesman("Frank", empNum++, 900, "West"));
-		employees.add(new Salesman("George", empNum++, 750, "West"));
-		employees.add(new Salesman("Lisa", empNum++, 750, "South"));
-		employees.add(new Technician("John", empNum++, 3, "Operations"));
-		employees.add(new Technician("Anne", empNum++, 3, "Development"));
-		employees.add(new Technician("Troy", empNum++, 2, "Development"));
-		employees.add(new Technician("Mark", empNum++, 1, "QA"));
-		employees.add(new Technician("Jessica", empNum++, 2, "QA"));
+		employees.add(new Salesman("Shirley", nextEmpNum(), 500, "North"));
+		employees.add(new Salesman("Jeff", nextEmpNum(), 800, "East"));
+		employees.add(new Salesman("Frank", nextEmpNum(), 900, "West"));
+		employees.add(new Salesman("George", nextEmpNum(), 750, "West"));
+		employees.add(new Salesman("Lisa", nextEmpNum(), 750, "South"));
+		employees.add(new Technician("John", nextEmpNum(), 3, "Operations"));
+		employees.add(new Technician("Anne", nextEmpNum(), 3, "Development"));
+		employees.add(new Technician("Troy", nextEmpNum(), 2, "Development"));
+		employees.add(new Technician("Mark", nextEmpNum(), 1, "Quality Assurance"));
+		employees.add(new Technician("Jessica", nextEmpNum(), 2, "Quality Assurance"));
 	}
 
 	/**
@@ -61,6 +60,21 @@ class Company
 		Collections.sort(employees);
 	}
 
+	/**
+	 * Adds an employee to ArrayList employees. Parameter type must be "t" or
+	 * "s", territory must be present in VALID_TERRITORIES, department must be
+	 * present in VALID_DEPTS, level must be greater than 0 and less than 
+	 * MAX_LEVEL. If any of the above conditions are not met, method returns 
+	 * an error code. -1 means the employee type does not exist, 1 means a
+	 * parameter was invalid. 
+	 * @param type The type of employee (e.g. s for Salesman).
+	 * @param name Employee name.
+	 * @param territory If type.equals("s"), this is the employee's territory.
+	 * @param department If type.equals("T"), this is the employee's department.
+	 * @param level If type.equals("T"), this is the employee's level.
+	 * @param salesTarget If type.equals("S"), this is the sales target.
+	 * @return 0 if employee is successfully added to ArrayList employees.
+	 */
 	public int addEmployee(String type, String name, String territory, 
 			String department, int level, double salesTarget)
 	{
@@ -76,6 +90,7 @@ class Company
 				employees.add(tech);
 
 			} else {
+				// ERROR: A parameter could not be validated.
 				value = 1;
 			}
 
@@ -87,6 +102,7 @@ class Company
 						territory);
 				employees.add(sm);
 			} else {
+				// ERROR: A parameter could not be validated.
 				value = 1;
 			}
 		} else {
@@ -96,6 +112,11 @@ class Company
 		return value;
 	}
 
+	/**
+	 * Deletes specified employee from ArrayList employees.
+	 * @param employeeNumber The number of the employee to be deleted.
+	 * @return 0 if successful, -1 if specified employee could not be found.
+	 */
 	public int deleteEmployee(int employeeNumber)
 	{
 		boolean found = false;
@@ -118,6 +139,13 @@ class Company
 		return value;
 	}
 
+	/**
+	 * Checks if a given string is present in a given set. Used to validate
+	 * strings passed to addEmployee().
+	 * @param validSet An array of permitted Strings, likely a class constant.
+	 * @param toValidate The String to be validated.
+	 * @return True if toValidate is permitted, false otherwise.
+	 */
 	private boolean validateString(String[] validSet, String toValidate)
 	{
 		boolean validated = false;
