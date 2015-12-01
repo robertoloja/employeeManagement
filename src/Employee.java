@@ -25,15 +25,13 @@ public class Employee implements Comparable<Employee>, Serializable
 
 	/**
 	 * Method for comparison of objects.
-	 * @param emp Employee to compare this with, on the basis of employeeNumber.
-	 * @return 1 if this is greater than emp, -1 if this is smaller than emp, 
-	 *			0 if equal.
+	 * @param o Employee to compare this with, on the basis of employee name.
+	 * @return 1 if alphabetically higher than emp, -1 if alphabetically lower
+	 * than emp, 0 if equal.
 	 */
-	public int compareTo(Employee emp)
+	public int compareTo(Employee o)
 	{
-		return this.getNumber() < emp.getNumber() ? -1 :
-				this.getNumber() >  emp.getNumber() ? +1 :
-				0;
+		return this.getName().compareToIgnoreCase(o.getName());
 	}
 	
 	/**
