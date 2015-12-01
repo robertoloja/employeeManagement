@@ -35,6 +35,7 @@ class Salesman extends Employee
 		this.territory = territory;
 	}
 
+	@Override
 	public String toString()
 	{
 		return super.toString() + ", salesman in " + territory + ". "

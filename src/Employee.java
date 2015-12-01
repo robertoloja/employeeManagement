@@ -29,6 +29,7 @@ public class Employee implements Comparable<Employee>, Serializable
 	 * @return 1 if alphabetically higher than emp, -1 if alphabetically lower
 	 * than emp, 0 if equal.
 	 */
+	@Override
 	public int compareTo(Employee o)
 	{
 		return this.getName().compareToIgnoreCase(o.getName());
@@ -39,6 +40,7 @@ public class Employee implements Comparable<Employee>, Serializable
 	 * "name, ID: number".
 	 * @return A String.
 	 */
+	@Override
 	public String toString()
 	{
 		return this.name + ", ID: " + this.number;

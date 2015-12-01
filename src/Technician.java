@@ -35,6 +35,7 @@ class Technician extends Employee
 		this.department = dept;
 	}
 
+	@Override
 	public String toString()
 	{
 		return super.toString() + ", technician in " + department + ". "
