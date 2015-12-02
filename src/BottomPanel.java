@@ -12,12 +12,17 @@ import javax.swing.JPanel;
 //with an if statement or create individual listeners.
 
 public class BottomPanel extends JPanel {
-	JButton displayButton;
-	JButton sortButton;
-	JButton addButton;
-	JButton deleteButton;
-
-	public BottomPanel() {
+	
+	
+	private JButton displayButton;
+	private JButton sortButton;
+	private JButton addButton;
+	private JButton deleteButton;
+	 Company company;
+	 TopPanel topPanel;
+	 MiddlePanel middlePanel;
+	
+	public BottomPanel(Company company, TopPanel topPanel, MiddlePanel middlePanel) {
 
 		setLayout(new FlowLayout());
 		displayButton = new DisplayButton();
@@ -25,6 +30,10 @@ public class BottomPanel extends JPanel {
 		addButton = new AddButton();
 		deleteButton = new DeleteButton();
 
+		this.company = company;
+		this.topPanel = topPanel;
+		this.middlePanel = middlePanel;
+		
 		add(displayButton);
 		add(sortButton);
 		add(addButton);
@@ -41,7 +50,6 @@ public class BottomPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-
 			JOptionPane.showMessageDialog(this, "Display Showed");
 		}
 

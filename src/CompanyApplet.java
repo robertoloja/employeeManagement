@@ -35,19 +35,21 @@ public class CompanyApplet extends JApplet {
 	JLabel label1, label2;
 
 	public CompanyApplet() { // Default layout manager is BorderLayout
-		//super("Company Applet");
+		// super("Company Applet");
 
-	
 	}
 
 	public void init() {
 
-		 setLayout(new GridLayout(3,1));
-		
-		add(new TopPanel());
-		add(new MiddlePanel());
-		add(new BottomPanel());
-	
-	
+		setLayout(new GridLayout(3, 1));
+		Company company = new Company();
+
+		TopPanel topPanel = new TopPanel(company);
+		MiddlePanel middlePanel = new MiddlePanel(company);
+		add(topPanel);
+		add(middlePanel);
+
+		add(new BottomPanel(company, topPanel, middlePanel));
+
 	}
 }

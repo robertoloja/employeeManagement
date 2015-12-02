@@ -30,7 +30,7 @@ public class MiddlePanel extends JPanel {
 	private JTextField terrority;
 	private JTextField department;
 
-	public MiddlePanel() {
+	public MiddlePanel(Company company) {
 
 		intFormatter = createIntegerFormatter();
 		doubleFormatter = createDoubleFormatter();
