@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -11,16 +12,24 @@ public class TopPanel extends JPanel {
 	// area (JTextArea) or other suitable component.
 
 	private JTextArea displayInformation;
-	
+	private Company company;
 	
 	public TopPanel(Company company) {
 		setLayout(new BorderLayout());
-		displayInformation = new JTextArea("Display Area");
+		displayInformation = new JTextArea();
 		displayInformation.setEditable(false);
 		add(displayInformation, BorderLayout.CENTER);
+		this.company = company;
+		updateDisplayInformation();
 	}
 
 	public void updateDisplayInformation() {
+		String displayString = "";
+		for (Employee e : company.getEmployees()){
+			displayString += e;
+			displayString += "\n";
+		}
+		displayInformation.setText(displayString);
 		
 	}
 }
