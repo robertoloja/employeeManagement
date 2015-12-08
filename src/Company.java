@@ -12,14 +12,25 @@ class Company
 	private ArrayList<Employee> employees = new ArrayList<Employee>();
 
 	// Class constants. Used for input validation.
-	private static final String[] VALID_DEPTS		= {"Operations", "Development", "Quality Assurance"};
+	private static final String[] VALID_DEPTS = {"Operations", "Development", "Quality Assurance"};
 	private static final String[] VALID_TERRITORIES = {"North", "South", "West", "East"};
-	private static final int MAX_LEVEL				= 3;
+	private static final int MAX_LEVEL = 3;
 
-	// Calling nextEmpNum() returns an employee number that is unique for the
-	// current runtime session.
-	private int empNum = 1;
-	private int nextEmpNum() { return empNum++; }
+	// Calling nextEmpNum() returns a unique employee number.
+	private int empNum = 0;
+	private int nextEmpNum() 
+	{ 
+		if (empNum == 0)
+		{
+			// Find highest employee number previously assigned.
+			for (Employee emp : employees)
+			{
+				if (emp.getNumber() > empNum)
+					empNum = emp.getNumber();
+			}
+		}
+		return ++empNum; 
+	}
 
 
 	/**
