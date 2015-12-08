@@ -30,7 +30,7 @@ public class MiddlePanel extends JPanel {
 	private JTextField terrority;
 	private JTextField department;
 
-	public MiddlePanel() {
+	public MiddlePanel(Company company) {
 
 		intFormatter = createIntegerFormatter();
 		doubleFormatter = createDoubleFormatter();
@@ -42,8 +42,10 @@ public class MiddlePanel extends JPanel {
 		technicianRadioButton = new JRadioButton("Technician");
 		
 		ButtonGroup  typeOfEmployeeGroup =  new ButtonGroup();
+
 		typeOfEmployeeGroup.add(salesmanRadioButton);
 		typeOfEmployeeGroup.add(technicianRadioButton);
+		typeOfEmployeeGroup.setSelected(salesmanRadioButton.getModel(), true);
 		
 		levels = new JComboBox<>(new Vector(Arrays.asList(LEVELS_LIST)));
 		salesTarget = new JFormattedTextField(doubleFormatter);
@@ -86,6 +88,9 @@ public class MiddlePanel extends JPanel {
 		formatter.setCommitsOnValidEdit(true);
 
 		return formatter;
+	}
+	
+	public void sendDataFields() {
 	}
 
 }
