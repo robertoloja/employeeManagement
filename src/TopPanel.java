@@ -22,6 +22,11 @@ public class TopPanel extends JPanel {
 		this.company = company;
 		updateDisplayInformation();
 	}
+	
+	public void resetInformation (){
+		company.resetList();
+		updateDisplayInformation();
+	}
 
 	public void updateDisplayInformation() {
 		String displayString = "";

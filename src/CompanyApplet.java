@@ -43,7 +43,8 @@ public class CompanyApplet extends JApplet {
 
 		setLayout(new GridLayout(3, 1));
 		Company company = new Company();
-
+		setSize(500, 500);
+		
 		TopPanel topPanel = new TopPanel(company);
 		MiddlePanel middlePanel = new MiddlePanel(company);
 		add(topPanel);

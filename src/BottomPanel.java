@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 public class BottomPanel extends JPanel {
 
-	private JButton displayButton;
+	private JButton resetButton;
 	private JButton sortButton;
 	private JButton addButton;
 	private JButton deleteButton;
@@ -24,7 +24,7 @@ public class BottomPanel extends JPanel {
 			MiddlePanel middlePanel) {
 
 		setLayout(new FlowLayout());
-		displayButton = new DisplayButton();
+		resetButton = new ResetButton();
 		sortButton = new SortButton();
 		addButton = new AddButton();
 		deleteButton = new DeleteButton();
@@ -33,24 +33,23 @@ public class BottomPanel extends JPanel {
 		this.topPanel = topPanel;
 		this.middlePanel = middlePanel;
 
-		add(displayButton);
+		add(resetButton);
 		add(sortButton);
 		add(addButton);
 		add(deleteButton);
 
 	}
 
-	class DisplayButton extends JButton implements ActionListener {
+	class ResetButton extends JButton implements ActionListener {
 
-		public DisplayButton() {
-			super("Display");
+		public ResetButton() {
+			super("Reset");
 			addActionListener(this);
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-		//	JOptionPane.showMessageDialog(this, "Display Showed");
-			topPanel.updateDisplayInformation();
+			topPanel.resetInformation();
 		}
 
 	}
@@ -65,7 +64,7 @@ public class BottomPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			//JOptionPane.showMessageDialog(this, "Sort Showed");
+			// JOptionPane.showMessageDialog(this, "Sort Showed");
 			company.sortList();
 			topPanel.updateDisplayInformation();
 		}
@@ -82,7 +81,8 @@ public class BottomPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			middlePanel.sendDataFields();
-			//JOptionPane.showMessageDialog(this, "Add Showed");
+			topPanel.updateDisplayInformation();
+			// JOptionPane.showMessageDialog(this, "Add Showed");
 		}
 
 	}
@@ -96,15 +96,32 @@ public class BottomPanel extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			int input;
+			int input = -9999;
 			do {
-			 input = Integer.parseInt((String) JOptionPane.showInputDialog(
-					this, "Enter only Employee number you wish to delete", "", JOptionPane.INFORMATION_MESSAGE, null,
-					null, ""));
-			}while (input == 0);
-			company.deleteEmployee(input);
-			topPanel.updateDisplayInformation();
-		}
+				try {
+					input = Integer
+							.parseInt((String) JOptionPane
+									.showInputDialog(
+											this,
+											"Enter only Employee number you wish to delete",
+											"",
+											JOptionPane.INFORMATION_MESSAGE,
+											null, null, ""));
+				} catch (NumberFormatException e) {
+					JOptionPane.showMessageDialog(this,
+							"INVALID EMPLOYEE NUMBERS");
+				}
+			} while (input == -9999);
 
+			int found = company.deleteEmployee(input);
+
+			if (found == 0) {
+				topPanel.updateDisplayInformation();
+			}
+			else {
+				JOptionPane.showMessageDialog(this,
+						"EMPLOYEE NUMBER " + input + " NOT FOUND");
+			}
+		}
 	}
 }
