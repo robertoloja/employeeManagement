@@ -174,4 +174,7 @@ class Company
 
 	// Getter for ArrayList employees.
 	public ArrayList<Employee> getEmployees() { return employees; }
+	public String[] getValidDepts() { return VALID_DEPTS; }
+	public String[] getValidTerritories() { return VALID_TERRITORIES; }
+	public int getMaxLevel() { return MAX_LEVEL; }
 }
