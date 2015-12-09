@@ -83,6 +83,7 @@ public class BottomPanel extends JPanel {
 			middlePanel.sendDataFields();
 			topPanel.updateDisplayInformation();
 			// JOptionPane.showMessageDialog(this, "Add Showed");
+		
 		}
 
 	}

@@ -1,8 +1,7 @@
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.util.Arrays;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class TopPanel extends JPanel {
@@ -18,7 +17,10 @@ public class TopPanel extends JPanel {
 		setLayout(new BorderLayout());
 		displayInformation = new JTextArea();
 		displayInformation.setEditable(false);
-		add(displayInformation, BorderLayout.CENTER);
+		 JScrollPane scroll = new JScrollPane (displayInformation);
+		    scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		    
+		add(scroll, BorderLayout.CENTER);
 		this.company = company;
 		updateDisplayInformation();
 	}
